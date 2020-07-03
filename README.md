@@ -1,15 +1,24 @@
 # BeD3Orgchart
 
 Angular component for display an Organization Chart.
+- Draggable
+- Zoomable
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JKGBMDGD4Q9NC)
 
+## DEMO
+
+[Best Effort](https://best-effort.web.app/orgchart-demo)
+
+## Thanks
+
+[My Inspiration](https://github.com/bumbeishvili/d3-organization-chart)
+
 ## Usage
 
-#### Comment: replace <<any>> for your used names
-
+#### Comment: replace [any] for your used names
 
 ### app.module.ts
 ```ts
