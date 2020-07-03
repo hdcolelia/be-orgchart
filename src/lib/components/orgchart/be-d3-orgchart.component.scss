@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+image.rounded {
+  border-radius: 50%;
+  border-color: blue;
+  border-width: 2px;
+}
