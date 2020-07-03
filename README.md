@@ -4,13 +4,15 @@ Angular component for display an Organization Chart.
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JKGBMDGD4Q9NC)
+
 ## Usage
 
 #### Comment: replace <<any>> for your used names
 
 
 ### app.module.ts
-
+```ts
 import { BED3OrgchartModule } from 'be-d3-orgchart';
 
 @NgModule({
@@ -26,20 +28,20 @@ import { BED3OrgchartModule } from 'be-d3-orgchart';
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
-
-### <<any>>.component.html
-
+```
+### any.component.html
+```html
 <be-d3-orgchart [nodes]="nodes"></be-d3-orgchart>
-
-### <<any>>.component.ts
+```
+### any.component.ts
 ```js 
 import { BED3OrgchartComponent, D3NodeBasicParser, ID3Node, INodesJson } from 'be-d3-orgchart';
 import { HttpClient } from '@angular/common/http'; // Required only of nodes are requested via hhtp request
 
 @Component({
-  selector: '<selector>',
-  templateUrl: './<<any>>.component.html',
-  styleUrls: ['./<<any>>.component.scss'] 
+  selector: 'any',
+  templateUrl: './any.component.html',
+  styleUrls: ['./any.component.scss'] 
 })
 export class <<any>>Component implements AfterViewInit {
   @ViewChild(BED3OrgchartComponent, { static: true }) chart: BED3OrgchartComponent;
