@@ -1,6 +1,10 @@
 {
   "name": "be-d3-orgchart",
-  "version": "0.0.1",
+  "version": "0.1.1",
+  "author": {
+    "name": "HDC",
+    "url": "https://best-effort.web.app/"
+  },
   "homepage": "https://best-effort.web.app/",
   "repository": {
     "url": "https://github.com/hdcolelia/be-orgchart"
