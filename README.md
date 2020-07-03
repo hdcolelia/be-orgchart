@@ -32,7 +32,7 @@ export class AppModule { }
 <be-d3-orgchart [nodes]="nodes"></be-d3-orgchart>
 
 ### <<any>>.component.ts
-
+```js 
 import { BED3OrgchartComponent, D3NodeBasicParser, ID3Node, INodesJson } from 'be-d3-orgchart';
 import { HttpClient } from '@angular/common/http'; // Required only of nodes are requested via hhtp request
 
@@ -57,10 +57,11 @@ export class <<any>>Component implements AfterViewInit {
       })
   }
 }
-
+```
 
 ### assets/nodes/nodes.json 
 #### Comment: you can delete the '$schema' item
+```json
 {
   "$schema": "node_modules/be-d3-orgchart/src/lib/$schemas/chart-schema.json",
   "nodes": [
@@ -104,19 +105,29 @@ export class <<any>>Component implements AfterViewInit {
     }
   ]
 }
-
+```
 
 ### Node Definition
-
+```ts
 interface ID3Node {
-  nodeId: string; // unique id
-  parentNodeId: string; // parent id -- blank for root
-  expanded?: boolean; // expande if you want to init expanded
-  nodeImage?: { // images options
-    url?: string; // url
-    icon?: string; // not supported yet
-    base64?: string; // base64 data
+  nodeId: string;         // unique id
+  parentNodeId: string;   // parent id -- blank for root
+  expanded?: boolean;     // expande if you want to init expanded
+  nodeImage?: {           // images options
+    url?: string;         // url
+    icon?: string;        // not supported yet
+    base64?: string;      // base64 data
   },
-  title: string; // title of node
-  description: string; // description of node
+  title: string;          // title of node
+  description: string;    // description of node
 }
+```
+
+```html
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="M3TYBMHLQJRUE" />
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+  <img alt="" border="0" src="https://www.paypal.com/en_AR/i/scr/pixel.gif" width="1" height="1" />
+</form>
+```
