@@ -1,6 +1,6 @@
 {
-  "name": "be-d3-orgchart",
-  "version": "0.1.9",
+  "name": "@be/orgchart",
+  "version": "0.1.0",
   "author": {
     "name": "HDC",
     "url": "https://best-effort.web.app/"
@@ -26,14 +26,16 @@
     "typescript",
     "Angular"
   ],
-  "main": "bundles/be-d3-orgchart.umd.js",
-  "module": "fesm5/be-d3-orgchart.js",
-  "es2015": "fesm2015/be-d3-orgchart.js",
-  "esm5": "esm5/be-d3-orgchart.js",
-  "esm2015": "esm2015/be-d3-orgchart.js",
-  "fesm5": "fesm5/be-d3-orgchart.js",
-  "fesm2015": "fesm2015/be-d3-orgchart.js",
-  "typings": "be-d3-orgchart.d.ts",
-  "metadata": "be-d3-orgchart.metadata.json",
-  "sideEffects": false
+  "main": "bundles/be-orgchart.umd.js",
+  "module": "fesm5/be-orgchart.js",
+  "es2015": "fesm2015/be-orgchart.js",
+  "esm5": "esm5/be-orgchart.js",
+  "esm2015": "esm2015/be-orgchart.js",
+  "fesm5": "fesm5/be-orgchart.js",
+  "fesm2015": "fesm2015/be-orgchart.js",
+  "typings": "be-orgchart.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+  }
 }
