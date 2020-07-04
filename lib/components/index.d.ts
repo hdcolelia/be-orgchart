@@ -1,1 +1,1 @@
-export * from './orgchart/be-d3-orgchart.component';
+export * from './orgchart/be-orgchart.component';
