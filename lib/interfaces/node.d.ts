@@ -12,6 +12,18 @@ export interface IColor {
     alpha: number;
 }
 export interface ID3Node {
+    nodeId: string;
+    parentNodeId: string;
+    expanded?: boolean;
+    nodeImage?: {
+        url?: string;
+        icon?: string;
+        base64?: string;
+    };
+    title: string;
+    description: string;
+}
+export interface xxxID3Node {
     expanded: boolean;
     hidden?: boolean;
     x0: number;

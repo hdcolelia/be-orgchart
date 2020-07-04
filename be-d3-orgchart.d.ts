@@ -1,5 +1,5 @@
 /**
  * Generated bundle index. Do not edit.
  */
-/// <amd-module name="be-d3-orgchart" />
 export * from './public-api';
+export { BED3OrgchartComponent as ɵa } from './lib/components/orgchart/be-d3-orgchart.component';
