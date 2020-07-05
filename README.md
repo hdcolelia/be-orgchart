@@ -1,4 +1,4 @@
-# @be/orgchart
+# be-orgchart
 
 Angular component for display an Organization Chart.
 - Draggable
@@ -22,7 +22,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ### app.module.ts
 ```ts
-import { BEOrgchartModule } from '@be/orgchart';
+import { BEOrgchartModule } from 'be-orgchart';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ export class AppModule { }
 ```
 ### any.component.ts
 ```js 
-import { BEOrgchartComponent, ID3Node, INodesJson } from '@be/orgchart';
+import { BEOrgchartComponent, ID3Node, INodesJson } from 'be-orgchart';
 import { HttpClient } from '@angular/common/http'; // Required only of nodes are requested via hhtp request
 
 @Component({
@@ -73,7 +73,6 @@ export class <<any>>Component implements AfterViewInit {
 #### Comment: you can delete the '$schema' item
 ```json
 {
-  "$schema": "./../../../../../projects/be-d3-orgchart/src/lib/$schemas/chart-schema.json",
   "nodes": [
     {
       "nodeId": "root",

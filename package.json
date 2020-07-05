@@ -1,5 +1,5 @@
 {
-  "name": "@be/orgchart",
+  "name": "be-orgchart",
   "version": "0.1.0",
   "author": {
     "name": "HDC",
@@ -34,8 +34,6 @@
   "fesm5": "fesm5/be-orgchart.js",
   "fesm2015": "fesm2015/be-orgchart.js",
   "typings": "be-orgchart.d.ts",
-  "sideEffects": false,
-  "scripts": {
-    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
-  }
+  "metadata": "be-orgchart.metadata.json",
+  "sideEffects": false
 }

@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3'), require('rxjs'), require('rxjs/operators'), require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('@be/orgchart', ['exports', 'd3', 'rxjs', 'rxjs/operators', '@angular/core'], factory) :
-    (global = global || self, factory((global.be = global.be || {}, global.be.orgchart = {}), global.d3, global.rxjs, global.rxjs.operators, global.ng.core));
+    typeof define === 'function' && define.amd ? define('be-orgchart', ['exports', 'd3', 'rxjs', 'rxjs/operators', '@angular/core'], factory) :
+    (global = global || self, factory(global['be-orgchart'] = {}, global.d3, global.rxjs, global.rxjs.operators, global.ng.core));
 }(this, (function (exports, d3, rxjs, operators, core) { 'use strict';
 
     /*! *****************************************************************************
@@ -735,41 +735,6 @@
         return D3OrgChart;
     }());
 
-    function BEOrgchartComponent_ng_template_2_Template(rf, ctx) { if (rf & 1) {
-        core["ɵɵnamespaceSVG"]();
-        core["ɵɵelementStart"](0, "svg", 4);
-        core["ɵɵelement"](1, "path", 5);
-        core["ɵɵelement"](2, "path", 6);
-        core["ɵɵelement"](3, "path", 7);
-        core["ɵɵelement"](4, "path", 8);
-        core["ɵɵelementStart"](5, "g", 9);
-        core["ɵɵelement"](6, "circle", 10);
-        core["ɵɵelement"](7, "circle", 11);
-        core["ɵɵelement"](8, "circle", 12);
-        core["ɵɵelementEnd"]();
-        core["ɵɵelementStart"](9, "g", 13);
-        core["ɵɵelementStart"](10, "text", 14);
-        core["ɵɵtext"](11, "A");
-        core["ɵɵelementEnd"]();
-        core["ɵɵelementStart"](12, "text", 15);
-        core["ɵɵtext"](13, "B");
-        core["ɵɵelementEnd"]();
-        core["ɵɵelementStart"](14, "text", 16);
-        core["ɵɵtext"](15, "C");
-        core["ɵɵelementEnd"]();
-        core["ɵɵelementEnd"]();
-        core["ɵɵelementEnd"]();
-    } }
-    function BEOrgchartComponent_ng_template_4_Template(rf, ctx) { if (rf & 1) {
-        core["ɵɵelementStart"](0, "div");
-        core["ɵɵelementStart"](1, "p");
-        core["ɵɵtext"](2, "$$title");
-        core["ɵɵelementEnd"]();
-        core["ɵɵelementStart"](3, "p");
-        core["ɵɵtext"](4, "$$id");
-        core["ɵɵelementEnd"]();
-        core["ɵɵelementEnd"]();
-    } }
     var BEOrgchartComponent = /** @class */ (function () {
         //#endregion
         function BEOrgchartComponent(prEl) {
@@ -840,48 +805,43 @@
             chart.nodeParser = prParser;
             chart.render();
         };
-        BEOrgchartComponent.ɵfac = function BEOrgchartComponent_Factory(t) { return new (t || BEOrgchartComponent)(core["ɵɵdirectiveInject"](core.ElementRef)); };
-        BEOrgchartComponent.ɵcmp = core["ɵɵdefineComponent"]({ type: BEOrgchartComponent, selectors: [["be-orgchart"]], inputs: { nodes: "nodes", nodeParser: "nodeParser" }, features: [core["ɵɵNgOnChangesFeature"]], decls: 6, vars: 0, consts: [[1, "container"], ["orgchart", ""], ["defaultTemplate", ""], ["nodeTemplate", ""], ["height", "400", "width", "450"], ["id", "lineAB", "d", "M 100 350 l 150 -300", "stroke", "red", "stroke-width", "3", "fill", "none"], ["id", "lineBC", "d", "M 250 50 l 150 300", "stroke", "red", "stroke-width", "3", "fill", "none"], ["d", "M 175 200 l 150 0", "stroke", "green", "stroke-width", "3", "fill", "none"], ["d", "M 100 350 q 150 -300 300 0", "stroke", "blue", "stroke-width", "5", "fill", "none"], ["stroke", "black", "stroke-width", "3", "fill", "black"], ["id", "pointA", "cx", "100", "cy", "350", "r", "3"], ["id", "pointB", "cx", "250", "cy", "50", "r", "3"], ["id", "pointC", "cx", "400", "cy", "350", "r", "3"], ["font-size", "30", "font-family", "sans-serif", "fill", "black", "stroke", "none", "text-anchor", "middle"], ["x", "100", "y", "350", "dx", "-30"], ["x", "250", "y", "50", "dy", "-10"], ["x", "400", "y", "350", "dx", "30"]], template: function BEOrgchartComponent_Template(rf, ctx) { if (rf & 1) {
-                core["ɵɵelement"](0, "div", 0, 1);
-                core["ɵɵtemplate"](2, BEOrgchartComponent_ng_template_2_Template, 16, 0, "ng-template", null, 2, core["ɵɵtemplateRefExtractor"]);
-                core["ɵɵtemplate"](4, BEOrgchartComponent_ng_template_4_Template, 5, 0, "ng-template", null, 3, core["ɵɵtemplateRefExtractor"]);
-            } }, styles: ["[_nghost-%COMP%]{display:flex;flex-direction:column;overflow:hidden}image.rounded[_ngcontent-%COMP%]{border-radius:50%;border-color:#00f;border-width:2px}"] });
+        BEOrgchartComponent.ctorParameters = function () { return [
+            { type: core.ElementRef }
+        ]; };
+        __decorate([
+            core.Input()
+        ], BEOrgchartComponent.prototype, "nodes", void 0);
+        __decorate([
+            core.Input()
+        ], BEOrgchartComponent.prototype, "nodeParser", void 0);
+        BEOrgchartComponent = __decorate([
+            core.Component({
+                selector: 'be-orgchart',
+                template: "<div #orgchart class=\"container\"></div>\r\n\r\n<ng-template #defaultTemplate>\r\n  <svg height=\"400\" width=\"450\">\r\n    <path id=\"lineAB\" d=\"M 100 350 l 150 -300\" stroke=\"red\" stroke-width=\"3\" fill=\"none\" />\r\n      <path id=\"lineBC\" d=\"M 250 50 l 150 300\" stroke=\"red\" stroke-width=\"3\" fill=\"none\" />\r\n      <path d=\"M 175 200 l 150 0\" stroke=\"green\" stroke-width=\"3\" fill=\"none\" />\r\n      <path d=\"M 100 350 q 150 -300 300 0\" stroke=\"blue\" stroke-width=\"5\" fill=\"none\" />\r\n      <!-- Mark relevant points -->\r\n      <g stroke=\"black\" stroke-width=\"3\" fill=\"black\"> \r\n        <circle id=\"pointA\" cx=\"100\" cy=\"350\" r=\"3\" />\r\n        <circle id=\"pointB\" cx=\"250\" cy=\"50\" r=\"3\" />\r\n        <circle id=\"pointC\" cx=\"400\" cy=\"350\" r=\"3\" />\r\n      </g>\r\n      <!-- Label the points -->\r\n      <g font-size=\"30\" font-family=\"sans-serif\" fill=\"black\" stroke=\"none\" text-anchor=\"middle\">\r\n        <text x=\"100\" y=\"350\" dx=\"-30\">A</text>\r\n        <text x=\"250\" y=\"50\" dy=\"-10\">B</text>\r\n        <text x=\"400\" y=\"350\" dx=\"30\">C</text>\r\n      </g>\r\n    </svg>\r\n</ng-template>\r\n\r\n<ng-template #nodeTemplate>\r\n  <div>\r\n    <p>$$title</p>\r\n    <p>$$id</p>\r\n  </div>\r\n</ng-template> ",
+                styles: [":host{display:flex;flex-direction:column;overflow:hidden}image.rounded{border-radius:50%;border-color:#00f;border-width:2px}"]
+            })
+        ], BEOrgchartComponent);
         return BEOrgchartComponent;
     }());
-    /*@__PURE__*/ (function () { core["ɵsetClassMetadata"](BEOrgchartComponent, [{
-            type: core.Component,
-            args: [{
-                    selector: 'be-orgchart',
-                    templateUrl: './be-orgchart.component.html',
-                    styleUrls: ['./be-orgchart.component.scss']
-                }]
-        }], function () { return [{ type: core.ElementRef }]; }, { nodes: [{
-                type: core.Input
-            }], nodeParser: [{
-                type: core.Input
-            }] }); })();
 
     var BEOrgchartModule = /** @class */ (function () {
         function BEOrgchartModule() {
         }
-        BEOrgchartModule.ɵmod = core["ɵɵdefineNgModule"]({ type: BEOrgchartModule });
-        BEOrgchartModule.ɵinj = core["ɵɵdefineInjector"]({ factory: function BEOrgchartModule_Factory(t) { return new (t || BEOrgchartModule)(); }, imports: [[]] });
+        BEOrgchartModule = __decorate([
+            core.NgModule({
+                declarations: [BEOrgchartComponent],
+                imports: [],
+                exports: [BEOrgchartComponent]
+            })
+        ], BEOrgchartModule);
         return BEOrgchartModule;
     }());
-    (function () { (typeof ngJitMode === "undefined" || ngJitMode) && core["ɵɵsetNgModuleScope"](BEOrgchartModule, { declarations: [BEOrgchartComponent], exports: [BEOrgchartComponent] }); })();
-    /*@__PURE__*/ (function () { core["ɵsetClassMetadata"](BEOrgchartModule, [{
-            type: core.NgModule,
-            args: [{
-                    declarations: [BEOrgchartComponent],
-                    imports: [],
-                    exports: [BEOrgchartComponent]
-                }]
-        }], null, null); })();
 
     exports.BEOrgchartComponent = BEOrgchartComponent;
     exports.BEOrgchartModule = BEOrgchartModule;
     exports.D3NodeBasicParser = D3NodeBasicParser;
     exports.D3OrgChart = D3OrgChart;
+    exports.ɵa = BEOrgchartComponent;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
