@@ -1,4 +1,4 @@
-# BeD3Orgchart
+# @be/orgchart
 
 Angular component for display an Organization Chart.
 - Draggable
@@ -22,7 +22,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ### app.module.ts
 ```ts
-import { BED3OrgchartModule } from 'be-d3-orgchart';
+import { BEOrgchartModule } from '@be/orgchart';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { BED3OrgchartModule } from 'be-d3-orgchart';
   ],
   imports: [
     ...
-    BED3OrgchartModule,
+    BEOrgchartModule,
     ....
   ],
   providers: [],
@@ -40,11 +40,11 @@ export class AppModule { }
 ```
 ### any.component.html
 ```html
-<be-d3-orgchart [nodes]="nodes"></be-d3-orgchart>
+<be-orgchart [nodes]="nodes"></be-orgchart>
 ```
 ### any.component.ts
 ```js 
-import { BED3OrgchartComponent, D3NodeBasicParser, ID3Node, INodesJson } from 'be-d3-orgchart';
+import { BEOrgchartComponent, ID3Node, INodesJson } from '@be/orgchart';
 import { HttpClient } from '@angular/common/http'; // Required only of nodes are requested via hhtp request
 
 @Component({
@@ -53,7 +53,7 @@ import { HttpClient } from '@angular/common/http'; // Required only of nodes are
   styleUrls: ['./any.component.scss'] 
 })
 export class <<any>>Component implements AfterViewInit {
-  @ViewChild(BED3OrgchartComponent, { static: true }) chart: BED3OrgchartComponent;
+  @ViewChild(BEOrgchartComponent, { static: true }) chart: BEOrgchartComponent;
 
   nodes: ID3Node[] = []; // you can fill it here
 
@@ -63,7 +63,6 @@ export class <<any>>Component implements AfterViewInit {
     const me = this;
     me.http.get('assets/nodes/nodes.json')
       .subscribe((data: INodesJson) => {
-        console.log('Data: ', data);
         me.nodes = data.nodes; 
       })
   }
@@ -74,43 +73,52 @@ export class <<any>>Component implements AfterViewInit {
 #### Comment: you can delete the '$schema' item
 ```json
 {
-  "$schema": "node_modules/be-d3-orgchart/src/lib/$schemas/chart-schema.json",
+  "$schema": "./../../../../../projects/be-d3-orgchart/src/lib/$schemas/chart-schema.json",
   "nodes": [
     {
       "nodeId": "root",
       "parentNodeId": "",
       "nodeImage": {
-        "url": "https://raw.githubusercontent.com/bumbeishvili/Assets/master/Projects/D3/Organization%20Chart/cto.jpg",
+        "url": "https://raw.githubusercontent.com/hdcolelia/be-orgchart/master/src/lib/assets/images/root.png",
         "icon": ""
       },
       "title": "John Doe",
       "description": "He is the boss"
-    }, {
+    },
+    {
       "nodeId": "id01",
       "parentNodeId": "root",
       "nodeImage": {
-        "url": "https://raw.githubusercontent.com/bumbeishvili/Assets/master/Projects/D3/Organization%20Chart/cto.jpg",
+        "url": "https://raw.githubusercontent.com/hdcolelia/be-orgchart/master/src/lib/assets/images/id01.png",
         "icon": ""
       },
       "title": "Juan Carlos Palomino",
       "description": "El Gerente"
-    }, {
+    },
+    {
       "nodeId": "id02",
       "parentNodeId": "root",
       "expanded": true,
       "nodeImage": {
-        "url": "https://raw.githubusercontent.com/bumbeishvili/Assets/master/Projects/D3/Organization%20Chart/cto.jpg",
+        "url": "https://raw.githubusercontent.com/hdcolelia/be-orgchart/master/src/lib/assets/images/id02.png",
         "icon": ""
       },
       "title": "Juan Palomino",
       "description": "Otro Gerente"
-    }, {
+    },
+    {
       "nodeId": "id03",
       "parentNodeId": "id02",
       "nodeImage": {
-        "url": "https://raw.githubusercontent.com/bumbeishvili/Assets/master/Projects/D3/Organization%20Chart/cto.jpg",
+        "url": "https://raw.githubusercontent.com/hdcolelia/be-orgchart/master/src/lib/assets/images/id03.png",
         "icon": ""
       },
+      "title": "Juan Perez",
+      "description": "Jefe"
+    },
+    {
+      "nodeId": "id04",
+      "parentNodeId": "id01",
       "title": "Juan Perez",
       "description": "Jefe"
     }

@@ -29,15 +29,58 @@ class D3NodeBasicParser {
     }
     drawNodes(prGroup) {
         const me = this;
-        prGroup.each((d, i) => me.drawNode(d, i, prGroup));
+        // adding rect
+        prGroup.append('rect').attr('class', 'node-rect')
+            .attr('width', me.width).attr('height', me.height)
+            .attr('stroke', 'blue').attr('stroke-width', 1)
+            .attr('fill', '#02B2AC').attr('rx', 12);
+        // adding title
+        prGroup.append('text').text(d => d.data.title)
+            .attr('font-size', 15).attr('x', 50).attr('y', 25);
+        // adding description
+        prGroup.append('text').text(d => d.data.description)
+            .attr('font-size', 10).attr('x', 50).attr('y', 45);
+        // prGroup.
+        const imageData = (d) => {
+            let linkRef = '';
+            if (!d.data.nodeImage)
+                return linkRef;
+            if (d.data.nodeImage.url)
+                linkRef = d.data.nodeImage.url;
+            if (d.data.nodeImage.icon)
+                linkRef = d.data.nodeImage.icon;
+            if (d.data.nodeImage.base64)
+                linkRef = `data:image/png;base64,${d.data.nodeImage.base64}`;
+            return linkRef;
+        };
+        prGroup.filter(d => imageData(d) != '')
+            .append('defs').append('pattern')
+            .attr('id', d => `img-${d.data.nodeId}`)
+            .attr('width', 1)
+            .attr('height', 1)
+            .append('image')
+            .attr('xlink:href', d => imageData(d))
+            .attr('width', me.imageDefs.w)
+            .attr('height', me.imageDefs.h)
+            .attr('preserveAspectRatio', 'xMidYMin slice');
+        // adding image
+        prGroup.filter(d => imageData(d) != '')
+            .append('rect').attr('class', 'node-image')
+            .attr('x', me.imageDefs.x).attr('y', me.imageDefs.y)
+            .attr('width', me.imageDefs.w).attr('height', me.imageDefs.h)
+            // .attr('stroke', 'blue').attr('stroke-width', 1)
+            .attr('fill', d => `url(#img-${d.data.nodeId})`).attr('rx', me.imageDefs.rx);
+        // prGroup.each((d, i) => me.drawNode(d, i, prGroup));
     }
     drawNode(prData, prIndex, node) {
         const me = this;
         // adding rect
+        console.log('Node: ', node.property('class'));
         node.append('rect').attr('class', 'node-rect')
             .attr('width', me.width).attr('height', me.height)
             .attr('stroke', 'blue').attr('stroke-width', 1)
             .attr('fill', '#02B2AC').attr('rx', 12);
+        console.log('Adding text : ', prData.data.nodeId);
         // adding title
         node.append('text').text(d => d.data.title)
             .attr('font-size', 15).attr('x', 50).attr('y', 25);
@@ -279,18 +322,15 @@ class D3OrgChart {
         // it is necesary for scope 
         const drawNodes = (container) => me.nodeParser.drawNodes(container);
         const drawCollapser = (nodeGroup) => {
-            nodeGroup.each((d, i) => {
-                // adding collapse / expand button
-                nodeGroup.append('circle')
-                    .attr('class', 'collapser')
-                    .attr('cx', me.nodeParser.width / 2)
-                    .attr('cy', me.nodeParser.height)
-                    .attr('r', 15)
-                    .attr('stroke', 'black')
-                    .attr('stroke-width', 2)
-                    .on('click', (node) => {
-                    me.expand(node, true);
-                });
+            nodeGroup.append('circle')
+                .attr('class', 'collapser')
+                .attr('cx', me.nodeParser.width / 2)
+                .attr('cy', me.nodeParser.height)
+                .attr('r', 15)
+                .attr('stroke', 'black')
+                .attr('stroke-width', 2)
+                .on('click', (node) => {
+                me.expand(node, true);
             });
         };
         const nodes = treeData.descendants();

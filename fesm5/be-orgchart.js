@@ -30,15 +30,58 @@ var D3NodeBasicParser = /** @class */ (function () {
     };
     D3NodeBasicParser.prototype.drawNodes = function (prGroup) {
         var me = this;
-        prGroup.each(function (d, i) { return me.drawNode(d, i, prGroup); });
+        // adding rect
+        prGroup.append('rect').attr('class', 'node-rect')
+            .attr('width', me.width).attr('height', me.height)
+            .attr('stroke', 'blue').attr('stroke-width', 1)
+            .attr('fill', '#02B2AC').attr('rx', 12);
+        // adding title
+        prGroup.append('text').text(function (d) { return d.data.title; })
+            .attr('font-size', 15).attr('x', 50).attr('y', 25);
+        // adding description
+        prGroup.append('text').text(function (d) { return d.data.description; })
+            .attr('font-size', 10).attr('x', 50).attr('y', 45);
+        // prGroup.
+        var imageData = function (d) {
+            var linkRef = '';
+            if (!d.data.nodeImage)
+                return linkRef;
+            if (d.data.nodeImage.url)
+                linkRef = d.data.nodeImage.url;
+            if (d.data.nodeImage.icon)
+                linkRef = d.data.nodeImage.icon;
+            if (d.data.nodeImage.base64)
+                linkRef = "data:image/png;base64," + d.data.nodeImage.base64;
+            return linkRef;
+        };
+        prGroup.filter(function (d) { return imageData(d) != ''; })
+            .append('defs').append('pattern')
+            .attr('id', function (d) { return "img-" + d.data.nodeId; })
+            .attr('width', 1)
+            .attr('height', 1)
+            .append('image')
+            .attr('xlink:href', function (d) { return imageData(d); })
+            .attr('width', me.imageDefs.w)
+            .attr('height', me.imageDefs.h)
+            .attr('preserveAspectRatio', 'xMidYMin slice');
+        // adding image
+        prGroup.filter(function (d) { return imageData(d) != ''; })
+            .append('rect').attr('class', 'node-image')
+            .attr('x', me.imageDefs.x).attr('y', me.imageDefs.y)
+            .attr('width', me.imageDefs.w).attr('height', me.imageDefs.h)
+            // .attr('stroke', 'blue').attr('stroke-width', 1)
+            .attr('fill', function (d) { return "url(#img-" + d.data.nodeId + ")"; }).attr('rx', me.imageDefs.rx);
+        // prGroup.each((d, i) => me.drawNode(d, i, prGroup));
     };
     D3NodeBasicParser.prototype.drawNode = function (prData, prIndex, node) {
         var me = this;
         // adding rect
+        console.log('Node: ', node.property('class'));
         node.append('rect').attr('class', 'node-rect')
             .attr('width', me.width).attr('height', me.height)
             .attr('stroke', 'blue').attr('stroke-width', 1)
             .attr('fill', '#02B2AC').attr('rx', 12);
+        console.log('Adding text : ', prData.data.nodeId);
         // adding title
         node.append('text').text(function (d) { return d.data.title; })
             .attr('font-size', 15).attr('x', 50).attr('y', 25);
@@ -309,18 +352,15 @@ var D3OrgChart = /** @class */ (function () {
         // it is necesary for scope 
         var drawNodes = function (container) { return me.nodeParser.drawNodes(container); };
         var drawCollapser = function (nodeGroup) {
-            nodeGroup.each(function (d, i) {
-                // adding collapse / expand button
-                nodeGroup.append('circle')
-                    .attr('class', 'collapser')
-                    .attr('cx', me.nodeParser.width / 2)
-                    .attr('cy', me.nodeParser.height)
-                    .attr('r', 15)
-                    .attr('stroke', 'black')
-                    .attr('stroke-width', 2)
-                    .on('click', function (node) {
-                    me.expand(node, true);
-                });
+            nodeGroup.append('circle')
+                .attr('class', 'collapser')
+                .attr('cx', me.nodeParser.width / 2)
+                .attr('cy', me.nodeParser.height)
+                .attr('r', 15)
+                .attr('stroke', 'black')
+                .attr('stroke-width', 2)
+                .on('click', function (node) {
+                me.expand(node, true);
             });
         };
         var nodes = treeData.descendants();
