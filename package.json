@@ -1,0 +1,41 @@
+{
+  "name": "be-orgchart",
+  "version": "0.1.0",
+  "author": {
+    "name": "HDC",
+    "url": "https://best-effort.web.app/"
+  },
+  "homepage": "https://best-effort.web.app/",
+  "repository": {
+    "url": "https://github.com/hdcolelia/be-orgchart"
+  },
+  "peerDependencies": {
+    "@angular/common": "^9.0.7",
+    "@angular/core": "^9.0.7",
+    "d3": "^5.16.0",
+    "tslib": "^1.10.0"
+  },
+  "dependencies": {
+    "d3": "^5.16.0"
+  },
+  "keywords": [
+    "orgchart",
+    "organization",
+    "chart",
+    "d3",
+    "typescript",
+    "Angular"
+  ],
+  "main": "bundles/be-orgchart.umd.js",
+  "module": "fesm5/be-orgchart.js",
+  "es2015": "fesm2015/be-orgchart.js",
+  "esm5": "esm5/be-orgchart.js",
+  "esm2015": "esm2015/be-orgchart.js",
+  "fesm5": "fesm5/be-orgchart.js",
+  "fesm2015": "fesm2015/be-orgchart.js",
+  "typings": "be-orgchart.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+  }
+}
