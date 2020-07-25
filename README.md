@@ -8,10 +8,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JKGBMDGD4Q9NC)
 
-
-
-## Working in progress for next version:
-
+## Working in progress for next version
 ### - fit button: It will fit the orgchart to container
 ### - center node: It will center node to the container when clicked
 ### - node icon: adding support to font awesome icons for nodes
